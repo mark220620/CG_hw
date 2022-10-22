@@ -4,6 +4,8 @@
 
 各項狀態： ✅：已完成  ⏳：待繳交
 
- ●✅ [Stop Watch, bottom](https://mark220620.github.io/CG_hw/HW1.html)
+ ●✅ [Train design, bottom](https://mark220620.github.io/CG_hw/HW0.html)
+
+ ●✅ [Stop watch, bottom](https://mark220620.github.io/CG_hw/HW1.html)
  
  
