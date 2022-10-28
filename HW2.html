@@ -83,7 +83,7 @@
                 materials.preload();
 
                 var objLoader = new OBJLoader();
-                objLoader.serMaterials(materials);
+                objLoader.setMaterials(materials);
                 objLoader.setPath('models/');
                 objLoader.load(modelName + '.obj', function (object) {
 
