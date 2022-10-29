@@ -94,6 +94,7 @@
 
                     car = new THREE.Object3D();
                     car.add(c);
+                    car.rotation.y = Math.PI/2;
                     scene.add(car);
 
                 }, onProgress, onError);
