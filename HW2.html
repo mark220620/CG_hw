@@ -92,7 +92,7 @@
 
                     car = new THREE.Object3D();
                     car.add(c);    
-                    //car.rotation.y = Math.PI / 2;                
+                    car.position.y = 15;                
                     scene.add(car);
 
                 }, onProgress, onError);
@@ -159,7 +159,7 @@
             //car = buildVehicle();
 
             car = new THREE.Object3D();
-            car.position.y = 15;
+            //car.position.y = 15;
             scene.add(car)
 
             cameraHelper = makeCameraHelper();
