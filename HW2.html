@@ -159,6 +159,7 @@
             //car = buildVehicle();
 
             car = new THREE.Object3D();
+            car.position.y = 15;
             scene.add(car)
 
             cameraHelper = makeCameraHelper();
@@ -216,7 +217,7 @@
             car.position.copy(pos);
             car.rotation.y = angle + Math.PI / 2;
             // third person camera
-            var thirdPos = car.localToWorld(new THREE.Vector3(10, 30, 20));
+            var thirdPos = car.localToWorld(new THREE.Vector3(10, 30, -15));
             var thirdAt = car.localToWorld(new THREE.Vector3(10, 20, 10));
             camera3rd.position.copy(thirdPos);
             camera3rd.lookAt(thirdAt);
