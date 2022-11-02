@@ -89,10 +89,10 @@
 
                     var c = unitize(object, targetSize);
                     c.name = 'OBJ';
-
+                    c.position.y = 15;
                     car = new THREE.Object3D();
                     car.add(c);    
-                    car.position.y = 15;                
+                                  
                     scene.add(car);
 
                 }, onProgress, onError);
