@@ -146,7 +146,7 @@
 
             renderer = new THREE.WebGLRenderer();
             renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setClearColor(0x888888);
+            renderer.setClearColor(0x333333);
 
             var controls = new OrbitControls(camera, renderer.domElement);
 
@@ -176,6 +176,12 @@
             light.penumbra = 0.5;
             scene.add(light);
             light.target = car;
+
+            // floor
+            var floor = new THREE.Mesh(new THREE.PlaneGeometry(400,400),new THREE.MeshPhongMaterial());
+            floor.rotation.x = -Math.PI / 2;
+            scene.add(floor);
+            
         }
         function makeCameraHelper() {
             var cameraModel = new THREE.Group();
