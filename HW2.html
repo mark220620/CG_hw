@@ -234,7 +234,7 @@
             cameraHelper.position.copy(camera3rd.position);
             cameraHelper.quaternion.copy(camera3rd.quaternion);
 
-            light.position.set(car.position.x,car.position.y,car.position.z);
+            light.position.copy(camera3rd.position);
 
             if (use3rd) {
                 renderer.render(scene, camera3rd);
