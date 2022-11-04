@@ -55,6 +55,8 @@
         var power, angle;
         var modelName;
 
+        var light;
+
         (function () {
             Math.clamp = function (val, min, max) {
                 return Math.min(Math.max(val, min), max);
@@ -89,7 +91,7 @@
 
                     var c = unitize(object, targetSize);
                     c.name = 'OBJ';
-                    c.position.y = 7;
+                    c.position.y = 7.2;
                     car = new THREE.Object3D();
                     car.add(c);    
                                   
@@ -164,6 +166,13 @@
 
             cameraHelper = makeCameraHelper();
             scene.add(cameraHelper);
+
+            ///////////////////////
+            // lighting
+
+            light = new THREE.SpotLight(0xffffff);
+            light.position.set(car.position.x,car.position.y,car.position.z);
+            scene.add(light);
         }
         function makeCameraHelper() {
             var cameraModel = new THREE.Group();
@@ -225,7 +234,7 @@
             cameraHelper.position.copy(camera3rd.position);
             cameraHelper.quaternion.copy(camera3rd.quaternion);
 
-
+            light.position.set(car.position.x,car.position.y,car.position.z);
 
             if (use3rd) {
                 renderer.render(scene, camera3rd);
