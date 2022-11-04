@@ -170,9 +170,12 @@
             ///////////////////////
             // lighting
 
-            light = new THREE.SpotLight(0xffffff);
-            light.position.set(car.position.x,car.position.y,car.position.z);
+            light = new THREE.SpotLight(0xffffff,1);
+            light.position.set(0,100,0);
+            light.angle = Math / 3;
+            light = penumbra = 0.5;
             scene.add(light);
+            light.target = car;
         }
         function makeCameraHelper() {
             var cameraModel = new THREE.Group();
@@ -234,7 +237,7 @@
             cameraHelper.position.copy(camera3rd.position);
             cameraHelper.quaternion.copy(camera3rd.quaternion);
 
-            light.position.copy(camera3rd.position);
+            
 
             if (use3rd) {
                 renderer.render(scene, camera3rd);
