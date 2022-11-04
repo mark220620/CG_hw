@@ -173,7 +173,7 @@
             light = new THREE.SpotLight(0xffffff,1);
             light.position.set(0,100,0);
             light.angle = Math / 3;
-            light = penumbra = 0.5;
+            light.penumbra = 0.5;
             scene.add(light);
             light.target = car;
         }
