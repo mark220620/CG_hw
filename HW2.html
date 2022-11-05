@@ -55,7 +55,7 @@
         var power, angle;
         var modelName;
 
-        var light;
+        var light,pointLight;
 
         (function () {
             Math.clamp = function (val, min, max) {
@@ -172,7 +172,7 @@
 
             light = new THREE.SpotLight(0xffffff,1);
             light.position.set(0,60,0);
-            light.angle = Math.PI / 6;
+            light.angle = Math.PI / 3;
             light.penumbra = 0.5;
             scene.add(light);
             light.target = car;
@@ -233,6 +233,7 @@
             var dt = clock.getDelta();
             update(dt);
             light.target = car;
+            light.position.set(car.position.x,60,car.position.z);
             // car update
             car.position.copy(pos);
             car.rotation.y = angle + Math.PI / 2;
