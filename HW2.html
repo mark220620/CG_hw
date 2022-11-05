@@ -232,7 +232,7 @@
 
             var dt = clock.getDelta();
             update(dt);
-            
+            light.target = car;
             // car update
             car.position.copy(pos);
             car.rotation.y = angle + Math.PI / 2;
