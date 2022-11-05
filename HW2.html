@@ -34,7 +34,7 @@
     <script src="https://jyunming-chen.github.io/tutsplus/js/KeyboardState.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
-
+   
 
     <script type="module">
         import * as THREE from 'https://cdn.skypack.dev/three@0.136';
@@ -121,7 +121,7 @@
         }
         function buildVehicle() {
             var car = new THREE.Object3D();
-            var mat = new THREE.MeshNormalMaterial();
+            var mat = new THREE.MeshLambertMaterial({color:0xffff00});
             var body = new THREE.Mesh(new THREE.CylinderGeometry(5, 5, 2, 20), mat);
             car.add(body);
             var pointer = new THREE.Mesh(new THREE.BoxGeometry(10, 2, 2), mat);
@@ -144,7 +144,7 @@
             var gridXZ = new THREE.GridHelper(200, 20, 'red', 'white');
             //scene.add(gridXZ);
 
-            renderer = new THREE.WebGLRenderer();
+            renderer = new THREE.WebGLRenderer({antialias:true});
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setClearColor(0x333333);
 
@@ -172,7 +172,7 @@
 
             light = new THREE.SpotLight(0xffffff,1);
             light.position.set(0,100,0);
-            light.angle = Math / 3;
+            light.angle = Math.PI / 3;
             light.penumbra = 0.5;
             scene.add(light);
             light.target = car;
@@ -182,6 +182,8 @@
             floor.rotation.x = -Math.PI / 2;
             scene.add(floor);
             
+            var amblight = new THREE.AmbientLight(0x444444);
+            scene.add(amblight);
         }
         function makeCameraHelper() {
             var cameraModel = new THREE.Group();
@@ -230,7 +232,7 @@
 
             var dt = clock.getDelta();
             update(dt);
-
+            
             // car update
             car.position.copy(pos);
             car.rotation.y = angle + Math.PI / 2;
