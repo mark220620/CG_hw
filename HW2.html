@@ -83,15 +83,18 @@
             mtlLoader.setPath('models/');
             mtlLoader.load(modelName + '.mtl', function (materials) {
                 materials.preload();
-
+    
                 var objLoader = new OBJLoader();
                 objLoader.setMaterials(materials);
                 objLoader.setPath('models/');
                 objLoader.load(modelName + '.obj', function (object) {
-
+                    
                     var c = unitize(object, targetSize);
                     c.name = 'OBJ';
                     c.position.y = 7.2;
+                    if (c.isMesh) {
+                        c.materials.wireframe = true;
+                    }
                     car = new THREE.Object3D();
                     car.add(c);    
                                   
