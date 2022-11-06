@@ -88,14 +88,26 @@
                 objLoader.setMaterials(materials);
                 objLoader.setPath('models/');
                 objLoader.load(modelName + '.obj', function (object) {
-                    object.children[0].materials.wireframe = true;
+                    
                     var c = unitize(object, targetSize);
                     c.name = 'OBJ';
-                    c.position.y = 7.2;
+                    c.position.y = 7.3;
                     
                     car = new THREE.Object3D();
                     car.add(c);    
-                                  
+                    car.traverse(function(child){
+                        if (child.isMesh) {
+                            var wireFrameGeomtry = new THREE.wireFrameGeomtry(child.geometry);
+                            var wireFrameMaterial = new THREE.LineBasicMaterial({
+                                color:0xffffff
+                            });
+                            var wireframe = new THREE.LineSegments(wireFrameGeomtry,wireFrameMaterial);
+
+                            child.add(wireframe);
+                            child.parent.attach(wireframe);
+                            child.parent.remove(child);
+                        }
+                    });        
                     scene.add(car);
 
                 }, onProgress, onError);
