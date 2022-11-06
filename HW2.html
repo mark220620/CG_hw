@@ -184,7 +184,7 @@
             scene.add(floor);
             
             var amblight = new THREE.AmbientLight(0x444444);
-            //scene.add(amblight);
+            scene.add(amblight);
         }
         function makeCameraHelper() {
             var cameraModel = new THREE.Group();
@@ -239,8 +239,8 @@
             car.position.copy(pos);
             car.rotation.y = angle + Math.PI / 2;
             // third person camera
-            var thirdPos = car.localToWorld(new THREE.Vector3(10, 30, -15));
-            var thirdAt = car.localToWorld(new THREE.Vector3(10, 20, 10));
+            var thirdPos = car.localToWorld(new THREE.Vector3(0, 30, -15));
+            var thirdAt = car.localToWorld(new THREE.Vector3(0, 20, 10));
             camera3rd.position.copy(thirdPos);
             camera3rd.lookAt(thirdAt);
 
