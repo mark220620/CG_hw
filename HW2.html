@@ -239,8 +239,8 @@
             car.position.copy(pos);
             car.rotation.y = angle + Math.PI / 2;
             // third person camera
-            var thirdPos = car.localToWorld(new THREE.Vector3(0, 30, -65));
-            var thirdAt = car.localToWorld(new THREE.Vector3(0, 10, 10));
+            var thirdPos = car.localToWorld(new THREE.Vector3(5, 30, -55));
+            var thirdAt = car.localToWorld(new THREE.Vector3(5, 10, 10));
             camera3rd.position.copy(thirdPos);
             camera3rd.lookAt(thirdAt);
 
