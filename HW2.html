@@ -95,19 +95,7 @@
                     
                     car = new THREE.Object3D();
                     car.add(c);    
-                    car.traverse(function(child){
-                        if (child.isMesh) {
-                            var wireFrameGeomtry = new THREE.wireFrameGeomtry(child.geometry);
-                            var wireFrameMaterial = new THREE.LineBasicMaterial({
-                                color:0xffffff
-                            });
-                            var wireframe = new THREE.LineSegments(wireFrameGeomtry,wireFrameMaterial);
-
-                            child.add(wireframe);
-                            child.parent.attach(wireframe);
-                            child.parent.remove(child);
-                        }
-                    });        
+                           
                     scene.add(car);
 
                 }, onProgress, onError);
