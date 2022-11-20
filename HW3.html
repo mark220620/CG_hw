@@ -107,7 +107,7 @@
                     mesh = new THREE.Mesh(new THREE.PlaneGeometry(window.innerWidth/4, window.innerHeight/4), texMat);
 
                     scene.add(mesh);
-                    mesh.position.y = -20;
+                    mesh.position.y = -140;
                     texture.wrapS = THREE.RepeatWrapping;
                     texture.wrapT = THREE.RepeatWrapping;
 
@@ -141,7 +141,7 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
         }
         var down = false;
-        var jump = false;
+        
         function textureAnimate() {
             textureAnimate.count = (textureAnimate.count === undefined) ? 1 : textureAnimate.count;
 
@@ -170,11 +170,8 @@
                     if (down === false) {
                         mesh.position.x += 10;
                     }
-                    ///////////////////////
-                    if (mesh.position.x === 42 && mesh.position.y === -15) {
-                        mesh.position.y -= 5;
-                    }
-                    console.log(mesh.position.x);
+                    
+                    //console.log(mesh.position.x);
 
                 }
                 if (keyboard.pressed("left")) {
@@ -189,11 +186,8 @@
                     if (down === false) {
                         mesh.position.x -= 10;
                     }
-                    /////////////////////////////
-                    if (mesh.position.x === 24 && mesh.position.y === -15) {
-                        mesh.position.y -= 5;
-                    }
-                    console.log(mesh.position.x);
+                    
+                    //console.log(mesh.position.x);
                 }
                 if (keyboard.pressed("up")) {
                     texture.offset.y = 0.4;
@@ -202,17 +196,10 @@
                     if (texture.offset.x >= 0.2) {
                         texture.offset.x = 0;
                     }
-                    jump = true;
-                    if (mesh.position.x === 24 && jump) {
-                        mesh.position.y += 5;
-
-                    }
+                   
 
                 }
-                ///////////////////////////
-                if (mesh.position.y >= -12) {
-                    mesh.position.y = -20;
-                }
+            
                 if (keyboard.pressed("down")) {
                     texture.offset.y = 0.6;
                     texture.offset.x = 0;
@@ -240,7 +227,7 @@
             console.log("window:"+window.innerWidth);
             if (keyboard.pressed("right")) {
                 if (mesh.position.x >= (window.innerWidth * 0.44)) {
-                    textureBg.offset.x += 1/400;
+                    textureBg.offset.x += 1/300;
                     mesh.position.x = window.innerWidth * 0.44;
                     
                 }
@@ -248,7 +235,7 @@
             }
             if (keyboard.pressed("left")) {
                 if (mesh.position.x <= (-window.innerWidth * 0.44)) {
-                    textureBg.offset.x -= 1 / 400;
+                    textureBg.offset.x -= 1 / 300;
                     mesh.position.x = -window.innerWidth * 0.44;
                 }
 
