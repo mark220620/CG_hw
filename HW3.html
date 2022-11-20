@@ -171,7 +171,7 @@
                         mesh.position.x += window.innerWidth*0.01;
                     }
                     
-                    console.log(mesh.position.x);
+                    //console.log(mesh.position.x);
 
                 }
                 if (keyboard.pressed("left")) {
@@ -187,7 +187,7 @@
                         mesh.position.x -= window.innerWidth*0.01;
                     }
                     
-                    console.log(mesh.position.x);
+                    //console.log(mesh.position.x);
                 }
                 if (keyboard.pressed("up")) {
                     texture.offset.y = 0.4;
@@ -228,15 +228,15 @@
             //console.log("height:"+window.innerHeight);
             if (keyboard.pressed("right")) {
                 if (mesh.position.x >= (window.innerWidth * 0.44)) {
-                    textureBg.offset.x += (window.innerWidth*0.000000271);
+                    textureBg.offset.x += (window.innerWidth*0.00000269);
                     mesh.position.x = window.innerWidth * 0.44;
-                    
-                }
+                    console.log(textureBg.offset.x); 
+                }  
 
             }
             if (keyboard.pressed("left")) {
                 if (mesh.position.x <= (-window.innerWidth * 0.44)) {
-                    textureBg.offset.x -= (window.innerWidth*0.000000271);
+                    textureBg.offset.x -= (window.innerWidth*0.00000269);
                     mesh.position.x = -window.innerWidth * 0.44;
                 }
 
