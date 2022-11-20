@@ -107,7 +107,7 @@
                     mesh = new THREE.Mesh(new THREE.PlaneGeometry(window.innerWidth/4, window.innerHeight/4), texMat);
 
                     scene.add(mesh);
-                    mesh.position.y = -140;
+                    mesh.position.y = window.innerHeight*-0.19;
                     texture.wrapS = THREE.RepeatWrapping;
                     texture.wrapT = THREE.RepeatWrapping;
 
@@ -168,10 +168,10 @@
                     texture.offset.y = 0.8;
 
                     if (down === false) {
-                        mesh.position.x += 10;
+                        mesh.position.x += window.innerWidth*0.01;
                     }
                     
-                    //console.log(mesh.position.x);
+                    console.log(mesh.position.x);
 
                 }
                 if (keyboard.pressed("left")) {
@@ -184,10 +184,10 @@
 
                     texture.offset.y = 0.8;
                     if (down === false) {
-                        mesh.position.x -= 10;
+                        mesh.position.x -= window.innerWidth*0.01;
                     }
                     
-                    //console.log(mesh.position.x);
+                    console.log(mesh.position.x);
                 }
                 if (keyboard.pressed("up")) {
                     texture.offset.y = 0.4;
@@ -225,9 +225,10 @@
             
             keyboard.update();
             console.log("window:"+window.innerWidth);
+            //console.log("height:"+window.innerHeight);
             if (keyboard.pressed("right")) {
                 if (mesh.position.x >= (window.innerWidth * 0.44)) {
-                    textureBg.offset.x += 1/300;
+                    textureBg.offset.x += window.innerWidth* 0.000000271;
                     mesh.position.x = window.innerWidth * 0.44;
                     
                 }
@@ -235,7 +236,7 @@
             }
             if (keyboard.pressed("left")) {
                 if (mesh.position.x <= (-window.innerWidth * 0.44)) {
-                    textureBg.offset.x -= 1 / 300;
+                    textureBg.offset.x -= window.innerWidth* 0.000000271;
                     mesh.position.x = -window.innerWidth * 0.44;
                 }
 
