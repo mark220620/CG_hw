@@ -40,6 +40,7 @@
         var textureBg;
         var keyboard = new KeyboardState();
         var mesh;
+        var width = window.innerWidth;
         init();
         animate();
         /*function buildGeometry() {
@@ -69,8 +70,9 @@
             document.body.appendChild(renderer.domElement);
 
             scene = new THREE.Scene();
-            camera = new THREE.OrthographicCamera(-50, 50, 50, -50, -10, 100);
+            camera = new THREE.OrthographicCamera(-window.innerWidth /2, window.innerWidth/2, window.innerHeight/2, -window.innerHeight/2, -10, 100);
             camera.position.z = 10;
+            window.addEventListener('resize',onWindowResize,false);
             scene.add(camera);
 
             ////////////////////////////////////////////////////////////
@@ -85,7 +87,7 @@
             var texMat = new THREE.MeshBasicMaterial({
                 map: textureBg
             });
-            var floor = new THREE.Mesh(new THREE.PlaneGeometry(120, 120), texMat);
+            var floor = new THREE.Mesh(new THREE.PlaneGeometry(window.innerWidth, window.innerHeight), texMat);
             scene.add(floor);
 
             // load a resource
@@ -102,7 +104,7 @@
                         transparent: true
                     });
                     //mesh = new THREE.Mesh(buildGeometry(), texMat);
-                    mesh = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), texMat);
+                    mesh = new THREE.Mesh(new THREE.PlaneGeometry(window.innerWidth/4, window.innerHeight/4), texMat);
 
                     scene.add(mesh);
                     mesh.position.y = -20;
@@ -125,11 +127,11 @@
             const cube = new THREE.Mesh(new THREE.BoxGeometry(10, 2, 2), new THREE.MeshBasicMaterial({
                 map: woodTex
             }));
-            scene.add(cube);
-            cube.position.set(30,-27,0);
+            //scene.add(cube);
+            cube.position.set(30, -27, 0);
 
             window.addEventListener('resize', onWindowResize, false);
-
+            
             setInterval(textureAnimate, 100);
         }
 
@@ -153,6 +155,7 @@
                         texture.offset.x = 0.2;
                     }
                 }
+
                 if (keyboard.pressed("right")) {
                     mesh.rotation.y = Math.PI
 
@@ -165,7 +168,11 @@
                     texture.offset.y = 0.8;
 
                     if (down === false) {
-                        mesh.position.x += 2;
+                        mesh.position.x += 10;
+                    }
+                    ///////////////////////
+                    if (mesh.position.x === 42 && mesh.position.y === -15) {
+                        mesh.position.y -= 5;
                     }
                     console.log(mesh.position.x);
 
@@ -180,9 +187,13 @@
 
                     texture.offset.y = 0.8;
                     if (down === false) {
-                        mesh.position.x -= 2;
+                        mesh.position.x -= 10;
                     }
-                    //console.log(mesh.position.x);
+                    /////////////////////////////
+                    if (mesh.position.x === 24 && mesh.position.y === -15) {
+                        mesh.position.y -= 5;
+                    }
+                    console.log(mesh.position.x);
                 }
                 if (keyboard.pressed("up")) {
                     texture.offset.y = 0.4;
@@ -192,12 +203,15 @@
                         texture.offset.x = 0;
                     }
                     jump = true;
-                    if (mesh.position.x=== 24 && jump) {
-                        mesh.position.y +=13;
-                        if (mesh.position.x === 28) {
-                            mesh.position.y -=13;
-                        }
+                    if (mesh.position.x === 24 && jump) {
+                        mesh.position.y += 5;
+
                     }
+
+                }
+                ///////////////////////////
+                if (mesh.position.y >= -12) {
+                    mesh.position.y = -20;
                 }
                 if (keyboard.pressed("down")) {
                     texture.offset.y = 0.6;
@@ -217,19 +231,25 @@
         }
 
         function animate() {
+            //var width = window.innerWidth;
+            if (window.innerWidth != width ) {
+                window.location.reload();
+            }
+            
             keyboard.update();
-
+            console.log("window:"+window.innerWidth);
             if (keyboard.pressed("right")) {
-                if (mesh.position.x >= 40) {
-                    textureBg.offset.x += 1 / 400;
-                    mesh.position.x = 40;
+                if (mesh.position.x >= (window.innerWidth * 0.44)) {
+                    textureBg.offset.x += 1/400;
+                    mesh.position.x = window.innerWidth * 0.44;
+                    
                 }
 
             }
             if (keyboard.pressed("left")) {
-                if (mesh.position.x <= -40) {
+                if (mesh.position.x <= (-window.innerWidth * 0.44)) {
                     textureBg.offset.x -= 1 / 400;
-                    mesh.position.x = -40;
+                    mesh.position.x = -window.innerWidth * 0.44;
                 }
 
             }
