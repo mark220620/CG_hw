@@ -106,7 +106,11 @@ function init() {
   }));
   //scene.add(border);
   border.rotation.x = Math.PI / 2
+<<<<<<< HEAD
 ///////////////////////////////////////////////////////
+=======
+
+>>>>>>> master
   var material = new THREE.MeshBasicMaterial({
     color: 0xffffff,
     side: THREE.DoubleSide,
@@ -308,8 +312,11 @@ function time() {
   minute += 1;
   Cal_Minute = Math.floor(minute / 3600);
   Cal_Second = Math.floor(Math.floor(minute % 3600) / 60);
+}
 
-
+function update() {
+  circle.rotation.x += 1 / 50;
+  circle.rotation.y += 1 / 100;
 }
 function animate() {
   homeScore.text = "" + i;
@@ -322,7 +329,7 @@ function animate() {
 
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
-
+  update();
   var dt = 0.05;
   pos.add(vel.clone().multiplyScalar(dt));
   if (pos.x > 90 || pos.x < -90)
