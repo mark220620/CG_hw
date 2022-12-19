@@ -55,6 +55,9 @@ function buildScene() {
   box8.rotation.x = Math.PI/2;
   box8.position.set(95,20,-30);
   scene.add(box1,box2,box3,box4,box5,box6,box7,box8);
+
+
+  
 }
 
 export { buildScene };
