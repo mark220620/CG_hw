@@ -33,7 +33,10 @@ function init() {
 
   scene = new THREE.Scene();
 
-  renderer = new THREE.WebGLRenderer();
+  renderer = new THREE.WebGLRenderer({
+    antialias: true,
+  alpha: true
+  });
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setClearColor(0x888888);
   document.body.appendChild(renderer.domElement);
@@ -207,7 +210,7 @@ function init() {
     [-h, -b, -g]
   ];
   
-  var circle = new THREE.Object3D();
+  circle = new THREE.Object3D();
   var footballEdge;
   
   var p0 = new THREE.Vector3(0, 0, 0);
@@ -222,7 +225,7 @@ function init() {
   
   footballEdge.add(
     new THREE.Mesh(
-      new THREE.TorusBufferGeometry(radius, lineWidth, 8, 128),
+      new THREE.TorusGeometry(radius, lineWidth, 8, 128),
       material
     )
   );
@@ -287,8 +290,8 @@ function init() {
     }
   }
   
-  var facesGeom = new THREE.PolyhedronBufferGeometry(
-    _.flattenDeep(cords),
+  var facesGeom = new THREE.PolyhedronGeometry(
+    cords,
     indicesOfFaces,
     radius,
     2
@@ -296,7 +299,9 @@ function init() {
   
   circle.add(new THREE.Mesh(facesGeom, material));
   
-  scene.add(footballEdge);
+ // scene.add(footballEdge);
+ circle.scale.set(0.02,0.02,0.02);
+ circle.position.y = 100;
   scene.add(circle);
   pos = new THREE.Vector3();
   vel = new THREE.Vector3(10, 0, 20);
